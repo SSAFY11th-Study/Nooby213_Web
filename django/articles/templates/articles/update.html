@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{  form.as_p  }}
+    <input type="submit" value="UPDATE">
+  </form>
+  <p><a href="{% url 'articles:detail' article.pk%}">[BACK]</a></p>
+{% endblock content %}

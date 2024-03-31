@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>게시글 상세 페이지</h1>
+  <p>{{  article.pk  }}번 게시글 | {{  article.content }}</p>
+  <p>작성 시간 : {{  article.created_at  }}</p>
+  {% if article.image %}
+    <img src="{{  article.image.url  }}" alt="image">
+  {% endif %}
+  <hr>
+  <p>{{  article.title  }}</p>
+  <p><a href="{% url 'articles:update' article.pk%}" >[UPDATE]</a></p>
+  <form action="{% url 'articles:delete' article.pk%}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+  </form>
+  <a href="{% url 'articles:index' %}">[BACK]</a>
+{% endblock content %}
